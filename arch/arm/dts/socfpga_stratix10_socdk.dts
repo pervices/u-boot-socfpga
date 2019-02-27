@@ -20,7 +20,7 @@
 	};
 
 	aliases {
-		serial1 = &uart1;
+		serial0 = &uart1;
 		ethernet0 = &gmac0;
 		spi0 = &qspi;
 		i2c0 = &i2c;
@@ -31,7 +31,7 @@
 	memory {
 		name = "memory";
 		device_type = "memory";
-		reg = <0x0 0x0 0x80000000>; /* 2GB */
+		reg = <0x0 0x0 0x40000000>; /* 1GB */
 	};
 
 	regulator_3_3v: 3-3-v-regulator {
@@ -109,7 +109,7 @@
 			status = "disabled";
 		};
 
-		uart1: serial1@ffc02100 {
+		uart1: serial0@ffc02100 {
 			compatible = "snps,dw-apb-uart";
 			reg = <0xffc02100 0x100>;
 			interrupts = <0 109 4>;
