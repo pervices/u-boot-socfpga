@@ -148,9 +148,9 @@
 			status = "okay";
 			u-boot,dm-pre-reloc;
 
-			flash0: n25q1024a@0 {
+			flash0: mt25qu01g@0 {
 				u-boot,dm-pre-reloc;
-				compatible = "stmicro,n25q1024a","spi-flash";
+				compatible = "micron,mt25qu01g","spi-flash";
 				reg = <0>;      /* chip select */
 				spi-max-frequency = <50000000>;
 				page-size = <256>;
