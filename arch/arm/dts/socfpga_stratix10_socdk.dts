@@ -152,7 +152,7 @@
 				u-boot,dm-pre-reloc;
 				compatible = "micron,mt25qu01g","spi-flash";
 				reg = <0>;      /* chip select */
-				spi-max-frequency = <50000000>;
+				spi-max-frequency = <25000000>;
 				page-size = <256>;
 				block-size = <16>; /* 2^16, 64KB */
 				tshsl-ns = <50>;
