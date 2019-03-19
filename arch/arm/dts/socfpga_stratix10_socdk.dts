@@ -21,7 +21,7 @@
 
 	aliases {
 		serial0 = &uart1;
-		ethernet0 = &gmac0;
+		ethernet0 = &gmac1;
 		spi0 = &qspi;
 		i2c = &i2c2;
 		spi1 = &spim0;
@@ -67,18 +67,48 @@
 			phy-mode = "rgmii";
 			phy-addr = <0xffffffff>; /* probe for phy addr */
 			max-speed = <1000>;
+
 			txd0-skew-ps = <0>; /* -420ps */
 			txd1-skew-ps = <0>; /* -420ps */
 			txd2-skew-ps = <0>; /* -420ps */
 			txd3-skew-ps = <0>; /* -420ps */
-			rxd0-skew-ps = <420>; /* 0ps */
-			rxd1-skew-ps = <420>; /* 0ps */
-			rxd2-skew-ps = <420>; /* 0ps */
-			rxd3-skew-ps = <420>; /* 0ps */
 			txen-skew-ps = <0>; /* -420ps */
-			txc-skew-ps = <900>; /* 0ps */
-			rxdv-skew-ps = <420>; /* 0ps */
-			rxc-skew-ps = <1680>; /* 780ps */
+			txc-skew-ps = <1860>; /* 960ps */
+
+			rxd0-skew-ps = <0>; /* -420ps */
+			rxd1-skew-ps = <0>; /* -420ps */
+			rxd2-skew-ps = <0>; /* -420ps */
+			rxd3-skew-ps = <0>; /* -420ps */
+			rxdv-skew-ps = <0>; /* -420ps */
+			rxc-skew-ps = <1860>; /* 960ps */
+			status = "disabled";
+		};
+
+		gmac1: ethernet@ff800000 {
+			compatible = "altr,socfpga-stmmac", "snps,dwmac-3.74a", "snps,dwmac";
+			reg = <0x0 0xff802000 0x2000>;
+			interrupts = <0 91 4>;
+			interrupt-names = "macirq";
+			mac-address = [00 00 00 00 00 00];
+			resets = <&rst EMAC1_RESET>;
+			reset-names = "stmmaceth";
+			phy-mode = "rgmii";
+			phy-addr = <0xffffffff>; /* probe for phy addr */
+			max-speed = <1000>;
+
+			txd0-skew-ps = <0>; /* -420ps */
+			txd1-skew-ps = <0>; /* -420ps */
+			txd2-skew-ps = <0>; /* -420ps */
+			txd3-skew-ps = <0>; /* -420ps */
+			txen-skew-ps = <0>; /* -420ps */
+			txc-skew-ps = <1860>; /* 960ps */
+
+			rxd0-skew-ps = <0>; /* -420ps */
+			rxd1-skew-ps = <0>; /* -420ps */
+			rxd2-skew-ps = <0>; /* -420ps */
+			rxd3-skew-ps = <0>; /* -420ps */
+			rxdv-skew-ps = <0>; /* -420ps */
+			rxc-skew-ps = <1860>; /* 960ps */
 			status = "okay";
 		};
 
