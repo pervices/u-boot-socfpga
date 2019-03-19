@@ -154,10 +154,10 @@
 			status = "okay";
 		};
 
-		usb0: usb@ffb00000 {
+		usb1: usb@ffb40000 {
 			compatible = "snps,dwc2";
-			reg = <0x0 0xffb00000 0xffff>;
-			interrupts = <0 93 4>;
+			reg = <0x0 0xffb40000 0x40000>;
+			interrupts = <0 94 4>;
 			phys = <&usbphy0>;
 			phy-names = "usb2-phy";
 			status = "okay";
