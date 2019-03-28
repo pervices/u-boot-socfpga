@@ -21,7 +21,6 @@
 
 	aliases {
 		serial0 = &uart1;
-		ethernet0 = &gmac1;
 		spi0 = &qspi;
 		i2c = &i2c2;
 		spi1 = &spim0;
@@ -109,7 +108,7 @@
 			rxd3-skew-ps = <0>; /* -420ps */
 			rxdv-skew-ps = <0>; /* -420ps */
 			rxc-skew-ps = <1860>; /* 960ps */
-			status = "okay";
+			status = "disabled";
 		};
 
 		mmc0: dwmmc0@0xff808000 {
@@ -132,11 +131,11 @@
 
 		uart0: serial0@ffc02000 {
 			compatible = "snps,dw-apb-uart";
-			reg = <0x0 0xffc02000 0x1000>;
+			reg = <0x0 0xffc02000 0x100>;
 			interrupts = <0 108 4>;
 			reg-shift = <2>;
 			reg-io-width = <4>;
-			status = "disabled";
+			status = "okay";
 		};
 
 		uart1: serial1@ffc02100 {
