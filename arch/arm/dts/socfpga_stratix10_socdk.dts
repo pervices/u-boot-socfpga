@@ -205,7 +205,7 @@
 			#size-cells = <0>;
 			compatible = "snps,dw-apb-gpio";
 			reg = <0x0 0xffc03200 0x100>;
-			status = "disabled";
+			status = "okay";
 
 			porta: gpio-controller@0 {
 				compatible = "snps,dw-apb-gpio-port";
