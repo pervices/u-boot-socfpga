@@ -16,7 +16,7 @@ popd
 
 export CROSS_COMPILE=aarch64-linux-gnu-
 export ARCH=arm64
-export PATH=$PATH:/opt/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu/bin/
+export PATH=$PATH:~/armgcc/bin/
 
 make mrproper
 make socfpga_stratix10_defconfig
