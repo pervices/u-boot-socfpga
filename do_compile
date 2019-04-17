@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd /opt/s19.1/embedded/
+pushd ~/soceds/embedded/
 
 _SOCEDS_ROOT=$(echo "$(pwd 2>/dev/null)")
 
