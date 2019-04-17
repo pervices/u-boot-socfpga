@@ -1,0 +1,34 @@
+#!/bin/bash
+
+pushd /opt/s19.1/embedded/
+
+_SOCEDS_ROOT=$(echo "$(pwd 2>/dev/null)")
+
+if [ ! -d "${_SOCEDS_ROOT}" ]; then
+    echo "${_SOCEDS_ROOT} not found. Invalid or corrupt SOCEDS Install" 1>&2
+    exit 1
+fi
+
+export SOCEDS_DEST_ROOT="${_SOCEDS_ROOT}"
+source "${_SOCEDS_ROOT}/env.sh"
+
+popd 
+
+export CROSS_COMPILE=aarch64-linux-gnu-
+export ARCH=arm64
+export PATH=$PATH:/opt/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu/bin/
+
+make mrproper
+make socfpga_stratix10_defconfig
+make -j5
+aarch64-linux-gnu-objcopy -I binary -O ihex --change-addresses 0xffe00000 spl/u-boot-spl-dtb.bin spl/u-boot-spl-dtb.ihex
+
+file_size=`du -b spl/u-boot-spl-dtb.ihex | awk '{printf "%s\n", $1}'`
+
+if [ $(($file_size%16)) != 0 ]; then
+    echo "File size not a multiple of 16. Pad spl/u-boot-spl-dtb.ihex with 0's."
+    pad_size=$((16-($file_size%16)))
+    ls -al spl/u-boot-spl-dtb.ihex
+    echo "Pad Size: $pad_size"
+    dd if=/dev/zero bs=1 count=$pad_size >> spl/u-boot-spl-dtb.ihex
+fi
