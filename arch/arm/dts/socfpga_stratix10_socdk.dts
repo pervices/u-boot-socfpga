@@ -20,7 +20,8 @@
 	};
 
 	aliases {
-		serial0 = &uart1;
+		serial0 = &uart0;
+		ethernet0 = &gmac0;
 		spi0 = &qspi;
 		i2c = &i2c2;
 		spi1 = &spim0;
@@ -72,15 +73,15 @@
 			txd2-skew-ps = <0>; /* -420ps */
 			txd3-skew-ps = <0>; /* -420ps */
 			txen-skew-ps = <0>; /* -420ps */
-			txc-skew-ps = <1860>; /* 960ps */
+			txc-skew-ps = <900>; /* 0ps */
 
-			rxd0-skew-ps = <0>; /* -420ps */
-			rxd1-skew-ps = <0>; /* -420ps */
-			rxd2-skew-ps = <0>; /* -420ps */
-			rxd3-skew-ps = <0>; /* -420ps */
-			rxdv-skew-ps = <0>; /* -420ps */
-			rxc-skew-ps = <1860>; /* 960ps */
-			status = "disabled";
+			rxd0-skew-ps = <420>; /* 0ps */
+			rxd1-skew-ps = <420>; /* 0ps */
+			rxd2-skew-ps = <420>; /* 0ps */
+			rxd3-skew-ps = <420>; /* 0ps */
+			rxdv-skew-ps = <420>; /* 0ps */
+			rxc-skew-ps = <1680>; /* 780ps */
+			status = "okay";
 		};
 
 		gmac1: ethernet@ff802000 {
@@ -144,7 +145,7 @@
 			interrupts = <0 109 4>;
 			reg-shift = <2>;
 			reg-io-width = <4>;
-			status = "okay";
+			status = "disabled";
 		};
 
 		usbphy0: usbphy@0 {
@@ -153,10 +154,10 @@
 			status = "okay";
 		};
 
-		usb1: usb@ffb40000 {
+		usb0: usb@ffb00000 {
 			compatible = "snps,dwc2";
-			reg = <0x0 0xffb40000 0x40000>;
-			interrupts = <0 94 4>;
+			reg = <0x0 0xffb00000 0xffff>;
+			interrupts = <0 93 4>;
 			phys = <&usbphy0>;
 			phy-names = "usb2-phy";
 			status = "okay";
