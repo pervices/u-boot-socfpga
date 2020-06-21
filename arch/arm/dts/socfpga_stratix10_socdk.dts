@@ -10,12 +10,16 @@
 
 	aliases {
 		ethernet0 = &gmac0;
+		i2c = &i2c2;
+		spi1 = &spim0;
+		spi2 = &spim1;
 		i2c0 = &i2c1;
 		serial0 = &uart0;
 	};
 
 	chosen {
 		stdout-path = "serial0:115200n8";
+		bootargs = "console=ttyS0,115200";
 		u-boot,boot0 = <&mmc>;
 	};
 
