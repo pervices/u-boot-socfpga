@@ -19,31 +19,16 @@
 		u-boot,boot0 = <&mmc>;
 	};
 
-	leds {
-		compatible = "gpio-leds";
-		hps0 {
-			label = "hps_led0";
-			gpios = <&portb 20 GPIO_ACTIVE_HIGH>;
-		};
-
-		hps1 {
-			label = "hps_led1";
-			gpios = <&portb 19 GPIO_ACTIVE_HIGH>;
-		};
-
-		hps2 {
-			label = "hps_led2";
-			gpios = <&portb 21 GPIO_ACTIVE_HIGH>;
-		};
-	};
 
 	memory {
 		device_type = "memory";
-		/* 4GB */
-		reg = <0 0x00000000 0 0x80000000>,
-		      <1 0x80000000 0 0x80000000>;
+		reg = <0 0x00000000 0 0x80000000>; /* 2GB */
 		u-boot,dm-pre-reloc;
 	};
+};
+
+&gpio0 {
+	status = "okay";
 };
 
 &gpio1 {
@@ -51,37 +36,19 @@
 };
 
 &gmac0 {
-	status = "okay";
-	phy-mode = "rgmii";
-	phy-handle = <&phy0>;
-
-	max-frame-size = <3800>;
-
-	mdio0 {
-		#address-cells = <1>;
-		#size-cells = <0>;
-		compatible = "snps,dwmac-mdio";
-		phy0: ethernet-phy@0 {
-			reg = <4>;
-
-			txd0-skew-ps = <0>; /* -420ps */
-			txd1-skew-ps = <0>; /* -420ps */
-			txd2-skew-ps = <0>; /* -420ps */
-			txd3-skew-ps = <0>; /* -420ps */
-			rxd0-skew-ps = <420>; /* 0ps */
-			rxd1-skew-ps = <420>; /* 0ps */
-			rxd2-skew-ps = <420>; /* 0ps */
-			rxd3-skew-ps = <420>; /* 0ps */
-			txen-skew-ps = <0>; /* -420ps */
-			txc-skew-ps = <900>; /* 0ps */
-			rxdv-skew-ps = <420>; /* 0ps */
-			rxc-skew-ps = <1680>; /* 780ps */
-		};
-	};
+        status = "okay";
 };
 
-&i2c1 {
+&gmac1 {
+	status = "disabled";
+};
+
+&i2c2 {
 	status = "okay";
+};
+
+&spim0 {
+        status = "okay"
 };
 
 &mmc {
@@ -89,18 +56,19 @@
 	cap-sd-highspeed;
 	cap-mmc-highspeed;
 	broken-cd;
+        num-slots = <1>;
 	bus-width = <4>;
 	drvsel = <3>;
 	smplsel = <0>;
 };
 
 &qspi {
-	flash0: flash@0 {
+	flash0: mt25qu01g@0 {
 		#address-cells = <1>;
-		#size-cells = <1>;
-		compatible = "n25q00a";
-		reg = <0>;
-		spi-max-frequency = <50000000>;
+		#size-cells = <0>;
+		compatible = "micron,mt25qu01g","spi-flash";
+		reg = <0>; /* chip select */
+		spi-max-frequency = <25000000>; /*<50000000>*/
 
 		m25p,fast-read;
 		cdns,page-size = <256>;
