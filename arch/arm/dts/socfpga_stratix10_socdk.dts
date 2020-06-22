@@ -52,7 +52,7 @@
 };
 
 &spim0 {
-        status = "okay"
+        status = "okay";
 };
 
 &mmc {

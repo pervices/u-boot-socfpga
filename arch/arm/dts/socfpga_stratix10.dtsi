@@ -308,7 +308,7 @@
 			 u-boot,dm-pre-reloc;
 		 };
 
-		spi0: spi@ffda4000 {
+		spim0: spi@ffda4000 {
 			compatible = "snps,dw-apb-ssi";
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -321,7 +321,7 @@
 			status = "disabled";
 		};
 
-		spi1: spi@ffda5000 {
+		spim1: spi@ffda5000 {
 			compatible = "snps,dw-apb-ssi";
 			#address-cells = <1>;
 			#size-cells = <0>;
