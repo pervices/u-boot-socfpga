@@ -512,7 +512,7 @@
 
 /* NAND */
 #if (CONFIG_PRELOADER_BOOT_FROM_NAND == 0)
-#undef CONFIG_NAND_DENALI
+#define CONFIG_NAND_DENALI
 #else
 #define CONFIG_NAND_DENALI
 #endif
