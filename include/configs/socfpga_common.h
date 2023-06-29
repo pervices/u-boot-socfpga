@@ -192,7 +192,7 @@
 	"fdtimagesize=0x7000\0" \
 	"mmcloadcmd=fatload\0" \
 	"mmcloadpart=1\0" \
-	"mmcroot=/dev/mmcblk0p2\0" \
+	"mmcroot=/dev/mmcblk0p3\0" \
 	"qspiloadcs=0\0" \
 	"qspibootimageaddr=0xa0000\0" \
 	"qspifdtaddr=0x50000\0" \
