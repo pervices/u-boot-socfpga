@@ -1,6 +1,10 @@
 #!/bin/bash
 
-pushd ~/soceds/embedded/
+if [ -d "~/soceds/embedded" ]; then
+    pushd ~/soceds/embedded/
+else
+    pushd soceds/embedded/
+fi
 
 _SOCEDS_ROOT=$(echo "$(pwd 2>/dev/null)")
 
