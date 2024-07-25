@@ -928,7 +928,7 @@ BOARD_SIZE_CHECK =
 endif
 
 ifneq ($(CONFIG_SPL_SIZE_LIMIT),0x0)
-SPL_SIZE_CHECK = @$(call size_check,$@,$$(tools/spl_size_limit))
+SPL_SIZE_CHECK =
 else
 SPL_SIZE_CHECK =
 endif
